@@ -1,0 +1,26 @@
+.bg {
+  /* The image used */
+  background-image: url("../../assets/twitterBackground2.jpg");
+
+  /* Full height */
+  height: 609px;
+  width: 100%;
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.appName {
+  font-size: 56px;
+  margin-left: 0px;
+  margin-top: 382px;
+}
+
+.para {
+  font-size: 18px;
+}
+.logo {
+  height: 200px;
+  width: 200px;
+  margin-left: 288px;
+}

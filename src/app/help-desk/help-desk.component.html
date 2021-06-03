@@ -1,0 +1,101 @@
+<div class="error" *ngIf="valid">
+  <label>{{ errorMsg }}</label>
+</div>
+<div class="loggedUser">
+  <label class="username">User: {{ userName }}</label>
+</div>
+<div class="sideBar">
+  <i class="fa fa-home fa-2x iconHome"></i>
+  <i class="fa fa-clock-o fa-2x iconClock"></i>
+  <i class="fa fa-comments fa-2x iconComment"></i>
+  <i class="fa fa-users fa-2x iconUser"></i>
+  <i class="fa fa-cog fa-2x iconCog"></i>
+  <img [src]="currentUserImage" alt="Avatar" class="avatarSidebar" />
+</div>
+<div class="row search">
+  <div class="col-3 topic">Tweets</div>
+  <div class="col-4">
+    <i class="fa fa-search searchIcon"></i
+    ><input
+      type="text"
+      class="quickSearch"
+      placeholder="Quick Search..."
+      readonly
+    />
+  </div>
+  <div class="col-2 filter">Filter</div>
+  <div class="col-3 status">
+    <i class="fa fa-circle dot"></i><label class="static">Online</label>
+  </div>
+</div>
+<div class="row chat">
+  <div class="col-3 parent">
+    <div
+      class="cardParent"
+      *ngFor="let homeTimeLine of homeTimeLine"
+      (click)="selectedParent(homeTimeLine)"
+    >
+      <img
+        [src]="homeTimeLine.user.profile_image_url_https"
+        alt="Avatar"
+        class="avatar"
+      />
+      <label class="name">{{ homeTimeLine.user.name }}</label>
+      <div class="cardCount">{{ homeTimeLine.retweet_count }}</div>
+      <div class="chatContent">{{ getText(homeTimeLine.text) }}...</div>
+    </div>
+  </div>
+  <div class="col-9 conversation">
+    <div class="col-8 over">
+      <div class="cardCurrent">
+        <img
+          [src]="choosenParent.user.profile_image_url_https"
+          alt="Avatar"
+          class="avatar"
+        />
+        <label class="name">{{ choosenParent.user.name }}</label>
+      </div>
+      <div class="cardChild" *ngFor="let child of childReply">
+        <img
+          [src]="child.user.profile_image_url_https"
+          alt="Avatar"
+          class="avatar"
+        />
+        <label class="name">{{ child.user.name }}</label>
+        <div class="cardTime">{{ child.created_at }}</div>
+        <div class="cardChatContent">{{ child.text }}</div>
+      </div>
+      <div class="directMsg">
+        <img [src]="currentUserImage" alt="Avatar" class="avatar" />
+        <input type="text" placeholder="Reply..." #msgContent />
+        <button
+          class="buttonSend"
+          type="button"
+          (click)="tweet(msgContent.value)"
+        >
+          <i class="fa fa-paper-plane fa-2x"></i>
+        </button>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="cardProfile">
+        <img
+          [src]="choosenParent.user.profile_image_url_https"
+          alt="Avatar"
+          class="avatarProfile"
+        />
+        <div class="name">Name: {{ choosenParent.user.name }}</div>
+        <div class="location">Location: {{ choosenParent.user.location }}</div>
+        <div class="followCount">
+          Followers: {{ choosenParent.user.followers_count }}
+        </div>
+        <div class="likes">
+          Likes: {{ choosenParent.user.favourites_count }}
+        </div>
+        <div class="following">
+          Following: {{ choosenParent.user.friends_count }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
