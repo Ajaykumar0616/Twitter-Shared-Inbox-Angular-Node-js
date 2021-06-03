@@ -16,8 +16,8 @@ var reqSecret;
 passport.use(
   new Strategy(
     {
-      consumerKey: "leCMVPskRp4g1eMdjWucHymOO",
-      consumerSecret: "sQ2zlE4o0IDvkskMKCHuQmMZSL3ttfia9FFjW4Jbdn6kLTiNxE",
+      consumerKey: "",
+      consumerSecret: "",
       callbackURL: "http://localhost:3000/posts/signIn/",
     },
     function (token, tokenSecret, profile, callback) {
